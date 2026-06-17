@@ -1,11 +1,61 @@
-<div align="center">
+# WineProfit Pro (국순당 서울사업부 전용 영업 지원 엔진)
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+국순당 서울사업부 대리점 전용 모바일 영업 자문 및 마진 시뮬레이터 실시간 구동 엔진입니다. GUI 제어판과 마진 검증 기준에 대응하는 [CRT 터미널 Plaintext Display] 보드를 실시간으로 교차 동기화하며, 마진 보장선 하회 시 상생 대체재 및 맞춤형 상생 제안 스크립트를 즉시 생성해 냅니다.
 
-  <h1>Built with AI Studio</h2>
+---
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## 🚀 주요 기능
+1. **고객관리 마스터 DB**: 강남 루프탑 바, 을지로 삼겹살 본점, 여의도 비즈니스 라운지 등 실제 핵심 상권 점주일의 직전 방문일 및 특이사항 조회
+2. **제품 포트폴리오 관리**: A 보르도 레드, C 칠레 까쇼, D 아르헨티나 말벡 등 제품별 공식 공급원가 및 권장 권고가, 마진 보증 한계율 일괄 검증
+3. **실시간 할인 매칭 시뮬레이션**: 할인율 변동에 따른 최종 판매가, 실시간 변동 마진율 즉시 계산 및 상태(안정/위험) 자동 변별 판정
+4. **프롬프트 시뮬레이션 엔진 (Gemini-3.5-Flash)**: 자연어 영업 상황 명령어 입력 시 고객 정보, 상품, 할인 비율을 자동으로 구조적 매칭 및 마진율 시뮬레이팅 수행
+5. **국순당 정중한 상생 제안서**: 마진 결과에 따라 우아하고 공손한 서울사업부 정제형 점주 발송 제안 스크립트 실시간 출력
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+---
 
-</div>
+## 🛠️ 기동 및 실행 방법 (로컬 환경 정밀 설계)
+
+이 프로젝트는 Vite(Client-SPA)와 Express(Server)가 유기적으로 연합된 Full-stack 통합 아키텍처로 구현되었습니다.
+
+### 1. 패키지 의존성 설치
+사용자 환경 터미널에서 아래 명령어를 수행하여 필요한 라이브러리를 설치합니다.
+```bash
+npm install
+```
+
+### 2. 환경 변수 구성
+`.env.example` 파일을 바탕으로 로컬 디렉터리에 `.env` 파일을 복제 생성한 뒤 환경 설정을 주입해 주십시오. (특히 프롬프트 인식을 위해 Gemini API 키 주입을 권장합니다)
+```env
+GEMINI_API_KEY="AI_Studio에서_발급받은_Gemini_API_Key"
+PORT=3000
+```
+
+### 3. 개발용 서버 기동 (Dev 모드)
+Vite 미들웨어가 핫 리로드(Hot-Module) 및 백엔드 API를 동시에 원포트로 런칭합니다.
+```bash
+npm run dev
+```
+
+### 4. 실운영 빌드 및 배포 기동 (Production 모드)
+프로덕션 빌드를 생성하고 백엔드를 번들링하여 standalone 패키지로 실행할 수 있습니다.
+```bash
+# 로컬 빌드 수행 (Vite 빌드 + server.ts 백엔드 CJS 컴파일)
+npm run build
+
+# 프로덕션 서버 실행
+npm start
+```
+
+---
+
+## 📦 GitHub 업로드 및 다운로드 가이드 (AI Studio 기능 안내)
+
+Google AI Studio 웹 빌더에서 현재 완성된 완벽한 소스코드를 본인의 GitHub로 내보내거나 ZIP 단일 아카이브 파일로 다운로드하는 초간단 프로세스 가이드입니다.
+
+1. **ZIP 압축 패키지로 받기**:
+   - 화면 우측 상단의 설정 버튼(톱니바퀴) 혹은 내보내기 아이콘을 클릭합니다.
+   - `Export as ZIP` 및 현재 소스코드 백업본 다운로드를 선택하여 로컬 PC에 보관 후, 로컬 Git Repository를 직접 초기화(`git init`)하여 직접 푸시할 수 있습니다.
+
+2. **GitHub로 즉시 마이그레이션**:
+   - Google AI Studio 우측 상단의 계정 연동 및 배포 설정 영역에서 `Export to GitHub` 메뉴를 활용하십시오.
+   - 보유하고 계신 GitHub 계정에 새로운 레포지토리(Repository)를 연동 동의 한 번으로 즉시 생성하고 전체 코드를 안전하게 업로드(Push)해 줍니다.

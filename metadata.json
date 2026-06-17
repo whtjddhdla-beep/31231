@@ -1,0 +1,6 @@
+{
+  "name": "WineProfit Pro",
+  "description": "국순당 서울 사업부 전용 모바일 영업 자문 및 마진 시뮬레이션 엔진",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
